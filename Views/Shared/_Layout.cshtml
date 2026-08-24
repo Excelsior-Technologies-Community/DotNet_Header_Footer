@@ -1,50 +1,795 @@
-﻿<!DOCTYPE html>
+﻿@using DotNet_Header_Footer.Models
+
+@{
+    var settings = ViewBag.SiteSettings as SiteSettings;
+
+    var brandName = settings?.BrandName ?? "STYLEHUB";
+    var logo = settings?.Logo;
+    var address = settings?.Address ?? "Ahmedabad, Gujarat, India";
+    var phone = settings?.Phone ?? "+91 98765 43210";
+    var email = settings?.Email ?? "support@stylehub.com";
+
+    var facebook = settings?.FacebookUrl ?? "#";
+    var instagram = settings?.InstagramUrl ?? "#";
+    var twitter = settings?.TwitterUrl ?? "#";
+
+    var map = settings?.MapEmbedUrl
+        ?? "https://www.google.com/maps?q=Ahmedabad,Gujarat,India&output=embed";
+
+    var copyright = settings?.CopyrightText
+        ?? "© 2026 STYLEHUB. All Rights Reserved.";
+}
+
+<!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - DotNet_Header_Footer</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/DotNet_Header_Footer.styles.css" asp-append-version="true" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - @brandName</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet"
+          href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+    <!-- Google Font -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">DotNet_Header_Footer</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+
+
+    <!-- =========================================================
+         TOP OFFER BAR
+    ========================================================== -->
+
+    <div class="top-bar">
+
+        <div class="container">
+
+            <div class="top-bar-inner">
+
+                <div class="top-left">
+
+                    <span>
+                        <i class="bi bi-truck"></i>
+                        Free Shipping on orders above ₹999
+                    </span>
+
                 </div>
+
+                <div class="top-center">
+                    New Season Collection — Up to 50% OFF
+                </div>
+
+                <div class="top-right">
+
+                    <a href="tel:@phone">
+                        <i class="bi bi-telephone"></i>
+                        @phone
+                    </a>
+
+                </div>
+
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+
+        </div>
+
     </div>
 
-    <footer class="border-top footer text-muted">
+
+    <!-- =========================================================
+         MAIN HEADER
+    ========================================================== -->
+
+    <header class="site-header">
+
         <div class="container">
-            &copy; 2026 - DotNet_Header_Footer - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
+            <div class="header-main">
+
+
+                <!-- LOGO -->
+
+                <a asp-controller="Home"
+                   asp-action="Index"
+                   class="brand">
+
+                    @if (!string.IsNullOrWhiteSpace(logo))
+                    {
+                        <img src="@logo"
+                             alt="@brandName"
+                             class="brand-image" />
+                    }
+                    else
+                    {
+                        <div class="brand-icon">
+                            <i class="bi bi-bag-heart-fill"></i>
+                        </div>
+
+                        <div class="brand-name">
+                            @brandName
+                        </div>
+                    }
+
+                </a>
+
+
+                <!-- SEARCH -->
+
+                <div class="desktop-search">
+
+                    <form asp-controller="Home"
+                          asp-action="Index"
+                          method="get">
+
+                        <div class="search-wrapper">
+
+                            <i class="bi bi-search search-icon"></i>
+
+                            <input type="text"
+                                   name="search"
+                                   placeholder="Search products, brands & categories..."
+                                   autocomplete="off" />
+
+                            <button type="submit">
+                                Search
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+                <!-- ACTIONS -->
+
+                <div class="header-actions">
+
+
+                    <a href="#"
+                       class="header-action">
+
+                        <div class="action-icon">
+
+                            <i class="bi bi-person"></i>
+
+                        </div>
+
+                        <span>
+                            Account
+                        </span>
+
+                    </a>
+
+
+                    <a href="#"
+                       class="header-action">
+
+                        <div class="action-icon">
+
+                            <i class="bi bi-heart"></i>
+
+                        </div>
+
+                        <span>
+                            Wishlist
+                        </span>
+
+                    </a>
+
+
+                    <a href="#"
+                       class="header-action cart">
+
+                        <div class="action-icon">
+
+                            <i class="bi bi-bag"></i>
+
+                            <span class="cart-badge">
+                                0
+                            </span>
+
+                        </div>
+
+                        <span>
+                            Cart
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- MOBILE MENU BUTTON -->
+
+                <button class="mobile-menu-button"
+                        type="button"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#mobileMenu">
+
+                    <i class="bi bi-list"></i>
+
+                </button>
+
+            </div>
+
+
+            <!-- MOBILE SEARCH -->
+
+            <div class="mobile-search">
+
+                <form asp-controller="Home"
+                      asp-action="Index"
+                      method="get">
+
+                    <div class="mobile-search-box">
+
+                        <i class="bi bi-search"></i>
+
+                        <input type="text"
+                               name="search"
+                               placeholder="Search products..." />
+
+                        <button type="submit">
+                            <i class="bi bi-arrow-right"></i>
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
         </div>
+
+
+        <!-- =====================================================
+             DESKTOP NAVIGATION
+        ====================================================== -->
+
+        <nav class="main-navigation">
+
+            <div class="container">
+
+                <div class="navigation-inner">
+
+                    <a asp-controller="Home"
+                       asp-action="Index"
+                       class="active">
+                        Home
+                    </a>
+
+                    <a href="#">
+                        Men
+                    </a>
+
+                    <a href="#">
+                        Women
+                    </a>
+
+                    <a href="#">
+                        Kids
+                    </a>
+
+                    <a href="#">
+                        Clothing
+                    </a>
+
+                    <a href="#">
+                        Shoes
+                    </a>
+
+                    <a href="#">
+                        Accessories
+                    </a>
+
+                    <a href="#">
+                        New Arrivals
+                    </a>
+
+                    <a href="#"
+                       class="sale-item">
+
+                        <i class="bi bi-fire"></i>
+                        Sale
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================================
+         MOBILE OFFCANVAS
+    ========================================================== -->
+
+    <div class="offcanvas offcanvas-end mobile-offcanvas"
+         tabindex="-1"
+         id="mobileMenu">
+
+        <div class="offcanvas-header">
+
+            <div class="mobile-brand">
+
+                <div class="brand-icon">
+                    <i class="bi bi-bag-heart-fill"></i>
+                </div>
+
+                <strong>
+                    @brandName
+                </strong>
+
+            </div>
+
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="offcanvas">
+            </button>
+
+        </div>
+
+
+        <div class="offcanvas-body">
+
+            <div class="mobile-nav">
+
+                <a asp-controller="Home"
+                   asp-action="Index">
+
+                    <i class="bi bi-house"></i>
+                    Home
+
+                </a>
+
+                <a href="#">
+
+                    <i class="bi bi-person-standing"></i>
+                    Men
+
+                </a>
+
+                <a href="#">
+
+                    <i class="bi bi-person"></i>
+                    Women
+
+                </a>
+
+                <a href="#">
+
+                    <i class="bi bi-stars"></i>
+                    Kids
+
+                </a>
+
+                <a href="#">
+
+                    <i class="bi bi-grid"></i>
+                    Clothing
+
+                </a>
+
+                <a href="#">
+
+                    <i class="bi bi-shoe-print"></i>
+                    Shoes
+
+                </a>
+
+                <a href="#">
+
+                    <i class="bi bi-watch"></i>
+                    Accessories
+
+                </a>
+
+                <a href="#">
+
+                    <i class="bi bi-bag-plus"></i>
+                    New Arrivals
+
+                </a>
+
+                <a href="#"
+                   class="mobile-sale">
+
+                    <i class="bi bi-fire"></i>
+                    Sale
+
+                </a>
+
+            </div>
+
+
+            <div class="mobile-contact">
+
+                <p>
+                    <i class="bi bi-telephone"></i>
+                    @phone
+                </p>
+
+                <p>
+                    <i class="bi bi-envelope"></i>
+                    @email
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+         PAGE CONTENT
+    ========================================================== -->
+
+    <main>
+
+        @RenderBody()
+
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer class="site-footer">
+
+
+        <!-- NEWSLETTER -->
+
+        <section class="newsletter">
+
+            <div class="container">
+
+                <div class="newsletter-inner">
+
+                    <div class="newsletter-text">
+
+                        <span>
+                            STAY IN STYLE
+                        </span>
+
+                        <h2>
+                            Get 10% off your first order
+                        </h2>
+
+                        <p>
+                            Subscribe to receive exclusive offers,
+                            new arrivals and fashion updates.
+                        </p>
+
+                    </div>
+
+
+                    <form class="newsletter-form">
+
+                        <input type="email"
+                               placeholder="Enter your email address"
+                               required />
+
+                        <button type="submit">
+
+                            Subscribe
+
+                            <i class="bi bi-arrow-right"></i>
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER MAIN -->
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+
+                <!-- ABOUT -->
+
+                <div class="footer-about">
+
+                    <div class="footer-brand">
+
+                        <div class="footer-brand-icon">
+
+                            <i class="bi bi-bag-heart-fill"></i>
+
+                        </div>
+
+                        <span>
+                            @brandName
+                        </span>
+
+                    </div>
+
+
+                    <p>
+                        Discover premium fashion, modern styles
+                        and timeless clothing designed to make
+                        every day look better.
+                    </p>
+
+
+                    <div class="social-links">
+
+                        <a href="@facebook"
+                           target="_blank"
+                           aria-label="Facebook">
+
+                            <i class="bi bi-facebook"></i>
+
+                        </a>
+
+                        <a href="@instagram"
+                           target="_blank"
+                           aria-label="Instagram">
+
+                            <i class="bi bi-instagram"></i>
+
+                        </a>
+
+                        <a href="@twitter"
+                           target="_blank"
+                           aria-label="Twitter">
+
+                            <i class="bi bi-twitter-x"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SHOP -->
+
+                <div class="footer-column">
+
+                    <h4>
+                        Shop
+                    </h4>
+
+                    <a href="#">
+                        Men
+                    </a>
+
+                    <a href="#">
+                        Women
+                    </a>
+
+                    <a href="#">
+                        Kids
+                    </a>
+
+                    <a href="#">
+                        New Arrivals
+                    </a>
+
+                    <a href="#">
+                        Sale
+                    </a>
+
+                </div>
+
+
+                <!-- HELP -->
+
+                <div class="footer-column">
+
+                    <h4>
+                        Help
+                    </h4>
+
+                    <a href="#">
+                        Contact Us
+                    </a>
+
+                    <a href="#">
+                        Shipping & Delivery
+                    </a>
+
+                    <a href="#">
+                        Returns & Refunds
+                    </a>
+
+                    <a href="#">
+                        Privacy Policy
+                    </a>
+
+                    <a href="#">
+                        Terms & Conditions
+                    </a>
+
+                </div>
+
+
+                <!-- CONTACT -->
+
+                <div class="footer-column contact-column">
+
+                    <h4>
+                        Contact
+                    </h4>
+
+
+                    <div class="contact-item">
+
+                        <i class="bi bi-geo-alt-fill"></i>
+
+                        <span>
+                            @address
+                        </span>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <i class="bi bi-telephone-fill"></i>
+
+                        <a href="tel:@phone">
+                            @phone
+                        </a>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <i class="bi bi-envelope-fill"></i>
+
+                        <a href="mailto:@email">
+                            @email
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 MAP
+            ================================================== -->
+
+            <section class="store-location">
+
+                <div class="location-heading">
+
+                    <div>
+
+                        <span>
+                            OUR LOCATION
+                        </span>
+
+                        <h2>
+                            Visit Our Store
+                        </h2>
+
+                    </div>
+
+                    <a href="https://www.google.com/maps"
+                       target="_blank"
+                       class="direction-button">
+
+                        <i class="bi bi-geo-alt-fill"></i>
+
+                        Get Directions
+
+                    </a>
+
+                </div>
+
+
+                <div class="map-wrapper">
+
+                    <iframe src="@map"
+                            loading="lazy"
+                            allowfullscreen
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- FOOTER BOTTOM -->
+
+        <div class="footer-bottom">
+
+            <div class="container">
+
+                <div class="footer-bottom-inner">
+
+                    <p>
+                        @copyright
+                    </p>
+
+                    <div class="payment-methods">
+
+                        <span>
+                            <i class="bi bi-credit-card"></i>
+                        </span>
+
+                        <span>
+                            <i class="bi bi-wallet2"></i>
+                        </span>
+
+                        <span>
+                            <i class="bi bi-cash-stack"></i>
+                        </span>
+
+                        <span>
+                            <i class="bi bi-bank"></i>
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </footer>
+
+
+    <!-- Bootstrap JS -->
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script src="~/js/site.js"
+            asp-append-version="true">
+    </script>
+
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
+
 </html>

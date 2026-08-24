@@ -2,7 +2,7 @@
 
 namespace DotNet_Header_Footer.Controllers
 {
-    public class HeaderController1 : Controller
+    public class HeaderController : Controller
     {
         public IActionResult Index()
         {

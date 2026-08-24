@@ -3,8 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Header_Footer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3109F971-9F65-40AC-A664-62C990DDB058}|DotNet_Header_Footer.csproj|c:\\users\\admin\\onedrive\\desktop\\exc\\dotnet_header_footer\\controllers\\headercontroller1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3109F971-9F65-40AC-A664-62C990DDB058}|DotNet_Header_Footer.csproj|solutionrelative:controllers\\headercontroller1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3109F971-9F65-40AC-A664-62C990DDB058}|DotNet_Header_Footer.csproj|c:\\users\\admin\\onedrive\\desktop\\exc\\dotnet_header_footer\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3109F971-9F65-40AC-A664-62C990DDB058}|DotNet_Header_Footer.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3109F971-9F65-40AC-A664-62C990DDB058}|DotNet_Header_Footer.csproj|c:\\users\\admin\\onedrive\\desktop\\exc\\dotnet_header_footer\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3109F971-9F65-40AC-A664-62C990DDB058}|DotNet_Header_Footer.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3109F971-9F65-40AC-A664-62C990DDB058}|DotNet_Header_Footer.csproj|c:\\users\\admin\\onedrive\\desktop\\exc\\dotnet_header_footer\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{3109F971-9F65-40AC-A664-62C990DDB058}|DotNet_Header_Footer.csproj|solutionrelative:wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3109F971-9F65-40AC-A664-62C990DDB058}|DotNet_Header_Footer.csproj|c:\\users\\admin\\onedrive\\desktop\\exc\\dotnet_header_footer\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3109F971-9F65-40AC-A664-62C990DDB058}|DotNet_Header_Footer.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3109F971-9F65-40AC-A664-62C990DDB058}|DotNet_Header_Footer.csproj|c:\\users\\admin\\onedrive\\desktop\\exc\\dotnet_header_footer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3109F971-9F65-40AC-A664-62C990DDB058}|DotNet_Header_Footer.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3109F971-9F65-40AC-A664-62C990DDB058}|DotNet_Header_Footer.csproj|c:\\users\\admin\\onedrive\\desktop\\exc\\dotnet_header_footer\\models\\sitesettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3109F971-9F65-40AC-A664-62C990DDB058}|DotNet_Header_Footer.csproj|solutionrelative:models\\sitesettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3109F971-9F65-40AC-A664-62C990DDB058}|DotNet_Header_Footer.csproj|c:\\users\\admin\\onedrive\\desktop\\exc\\dotnet_header_footer\\controllers\\headercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3109F971-9F65-40AC-A664-62C990DDB058}|DotNet_Header_Footer.csproj|solutionrelative:controllers\\headercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,13 +46,91 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Header_Footer\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Header_Footer\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "wwwroot\\css\\site.css",
+              "ViewState": "AgIAAAIEAAAAAI6ZmZmpv+8EAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-08-24T12:12:22.507Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Header_Footer\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Header_Footer\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAHsBAAAAAAAAAAAYwJ8BAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-24T12:11:50.365Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Header_Footer\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Header_Footer\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-24T11:50:42.89Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Header_Footer\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Header_Footer\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-24T11:50:23.282Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "HeaderController1.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Header_Footer\\Controllers\\HeaderController1.cs",
-              "RelativeDocumentMoniker": "Controllers\\HeaderController1.cs",
-              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Header_Footer\\Controllers\\HeaderController1.cs",
-              "RelativeToolTip": "Controllers\\HeaderController1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Header_Footer\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Header_Footer\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAADkAAADQYGZmZmYiwFQAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-24T11:45:57.185Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SiteSettings.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Header_Footer\\Models\\SiteSettings.cs",
+              "RelativeDocumentMoniker": "Models\\SiteSettings.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Header_Footer\\Models\\SiteSettings.cs",
+              "RelativeToolTip": "Models\\SiteSettings.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAOBwPRoAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-24T11:45:08.135Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "HeaderController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Header_Footer\\Controllers\\HeaderController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HeaderController.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Header_Footer\\Controllers\\HeaderController.cs",
+              "RelativeToolTip": "Controllers\\HeaderController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-24T11:15:05.574Z",
               "EditorCaption": ""
