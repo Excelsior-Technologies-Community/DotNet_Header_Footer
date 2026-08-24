@@ -1,7 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Header_Footer\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3109F971-9F65-40AC-A664-62C990DDB058}|DotNet_Header_Footer.csproj|c:\\users\\admin\\onedrive\\desktop\\exc\\dotnet_header_footer\\controllers\\headercontroller1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3109F971-9F65-40AC-A664-62C990DDB058}|DotNet_Header_Footer.csproj|solutionrelative:controllers\\headercontroller1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +14,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HeaderController1.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Header_Footer\\Controllers\\HeaderController1.cs",
+              "RelativeDocumentMoniker": "Controllers\\HeaderController1.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\Desktop\\Exc\\DotNet_Header_Footer\\Controllers\\HeaderController1.cs",
+              "RelativeToolTip": "Controllers\\HeaderController1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-24T11:15:05.574Z",
+              "EditorCaption": ""
             }
           ]
         }
