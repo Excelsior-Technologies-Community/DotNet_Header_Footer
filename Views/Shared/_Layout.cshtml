@@ -3,21 +3,74 @@
 @{
     var settings = ViewBag.SiteSettings as SiteSettings;
 
-    var brandName = settings?.BrandName ?? "STYLEHUB";
-    var logo = settings?.Logo;
-    var address = settings?.Address ?? "Ahmedabad, Gujarat, India";
-    var phone = settings?.Phone ?? "+91 98765 43210";
-    var email = settings?.Email ?? "support@stylehub.com";
+    var brandName = string.IsNullOrWhiteSpace(settings?.BrandName)
+        ? "FASHIONHUB"
+        : settings.BrandName.Trim();
 
-    var facebook = settings?.FacebookUrl ?? "#";
-    var instagram = settings?.InstagramUrl ?? "#";
-    var twitter = settings?.TwitterUrl ?? "#";
+    // =========================================================
+    // LOGO PATH
+    // =========================================================
 
-    var map = settings?.MapEmbedUrl
-        ?? "https://www.google.com/maps?q=Ahmedabad,Gujarat,India&output=embed";
+    var logoValue = settings?.Logo;
+    string logoPath = Url.Content("~/Images/logo.png");
 
-    var copyright = settings?.CopyrightText
-        ?? "© 2026 STYLEHUB. All Rights Reserved.";
+    if (!string.IsNullOrWhiteSpace(logoValue))
+    {
+        logoValue = logoValue.Trim();
+
+        if (logoValue.StartsWith("~/"))
+        {
+            logoPath = Url.Content(logoValue);
+        }
+        else if (logoValue.StartsWith("/"))
+        {
+            logoPath = logoValue;
+        }
+        else if (logoValue.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
+                 logoValue.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+        {
+            logoPath = logoValue;
+        }
+        else
+        {
+            logoPath = Url.Content("~/Images/" + logoValue.TrimStart('/'));
+        }
+    }
+
+    var address = string.IsNullOrWhiteSpace(settings?.Address)
+        ? "Ahmedabad, Gujarat, India"
+        : settings.Address.Trim();
+
+    var phone = string.IsNullOrWhiteSpace(settings?.Phone)
+        ? "+91 98765 43210"
+        : settings.Phone.Trim();
+
+    var email = string.IsNullOrWhiteSpace(settings?.Email)
+        ? "support@fashionhub.com"
+        : settings.Email.Trim();
+
+    var facebook = string.IsNullOrWhiteSpace(settings?.FacebookUrl)
+        ? "#"
+        : settings.FacebookUrl.Trim();
+
+    var instagram = string.IsNullOrWhiteSpace(settings?.InstagramUrl)
+        ? "#"
+        : settings.InstagramUrl.Trim();
+
+    var twitter = string.IsNullOrWhiteSpace(settings?.TwitterUrl)
+        ? "#"
+        : settings.TwitterUrl.Trim();
+
+    var map = string.IsNullOrWhiteSpace(settings?.MapEmbedUrl)
+        ? "https://www.google.com/maps?q=Ahmedabad,Gujarat,India&output=embed"
+        : settings.MapEmbedUrl.Trim();
+
+    var copyright = string.IsNullOrWhiteSpace(settings?.CopyrightText)
+        ? $"© {DateTime.Now.Year} {brandName}. All Rights Reserved."
+        : settings.CopyrightText.Trim();
+
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
 }
 
 <!DOCTYPE html>
@@ -31,28 +84,45 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0" />
 
-    <title>@ViewData["Title"] - @brandName</title>
+    <meta name="theme-color"
+          content="#111111" />
 
-    <!-- Bootstrap -->
+    <title>
+        @ViewData["Title"] - @brandName
+    </title>
+
+    <!-- =====================================================
+         BOOTSTRAP
+    ====================================================== -->
+
     <link rel="stylesheet"
           href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 
-    <!-- Bootstrap Icons -->
+    <!-- =====================================================
+         BOOTSTRAP ICONS
+    ====================================================== -->
+
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
-    <!-- Google Font -->
+    <!-- =====================================================
+         GOOGLE FONT
+    ====================================================== -->
+
     <link rel="preconnect"
-          href="https://fonts.googleapis.com">
+          href="https://fonts.googleapis.com" />
 
     <link rel="preconnect"
           href="https://fonts.gstatic.com"
-          crossorigin>
+          crossorigin />
 
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
-          rel="stylesheet">
+          rel="stylesheet" />
 
-    <!-- Custom CSS -->
+    <!-- =====================================================
+         CUSTOM CSS
+    ====================================================== -->
+
     <link rel="stylesheet"
           href="~/css/site.css"
           asp-append-version="true" />
@@ -61,24 +131,19 @@
 
 <body>
 
-
-    <!-- =========================================================
+    <!-- =====================================================
          TOP OFFER BAR
-    ========================================================== -->
+    ====================================================== -->
 
     <div class="top-bar">
 
-        <div class="container">
+        <div class="site-container">
 
             <div class="top-bar-inner">
 
                 <div class="top-left">
-
-                    <span>
-                        <i class="bi bi-truck"></i>
-                        Free Shipping on orders above ₹999
-                    </span>
-
+                    <i class="bi bi-truck"></i>
+                    <span>Free Shipping on orders above ₹999</span>
                 </div>
 
                 <div class="top-center">
@@ -89,7 +154,7 @@
 
                     <a href="tel:@phone">
                         <i class="bi bi-telephone"></i>
-                        @phone
+                        <span>@phone</span>
                     </a>
 
                 </div>
@@ -101,44 +166,33 @@
     </div>
 
 
-    <!-- =========================================================
-         MAIN HEADER
-    ========================================================== -->
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
 
     <header class="site-header">
 
-        <div class="container">
+        <div class="site-container">
 
             <div class="header-main">
-
 
                 <!-- LOGO -->
 
                 <a asp-controller="Home"
                    asp-action="Index"
-                   class="brand">
+                   class="brand"
+                   aria-label="@brandName Home">
 
-                    @if (!string.IsNullOrWhiteSpace(logo))
-                    {
-                        <img src="@logo"
-                             alt="@brandName"
-                             class="brand-image" />
-                    }
-                    else
-                    {
-                        <div class="brand-icon">
-                            <i class="bi bi-bag-heart-fill"></i>
-                        </div>
-
-                        <div class="brand-name">
-                            @brandName
-                        </div>
-                    }
+                    <img src="@logoPath"
+                         alt="@brandName"
+                         class="brand-image"
+                         loading="eager"
+                         onerror="this.onerror=null;this.src='@Url.Content("~/Images/logo.png")';" />
 
                 </a>
 
 
-                <!-- SEARCH -->
+                <!-- DESKTOP SEARCH -->
 
                 <div class="desktop-search">
 
@@ -152,6 +206,7 @@
 
                             <input type="text"
                                    name="search"
+                                   value="@Context.Request.Query["search"]"
                                    placeholder="Search products, brands & categories..."
                                    autocomplete="off" />
 
@@ -166,45 +221,42 @@
                 </div>
 
 
-                <!-- ACTIONS -->
+                <!-- HEADER ACTIONS -->
 
                 <div class="header-actions">
 
-
-                    <a href="#"
-                       class="header-action">
+                    <a asp-controller="Account"
+                       asp-action="Login"
+                       class="header-action"
+                       aria-label="Account">
 
                         <div class="action-icon">
-
                             <i class="bi bi-person"></i>
-
                         </div>
 
-                        <span>
-                            Account
-                        </span>
+                        <span>Account</span>
 
                     </a>
 
 
-                    <a href="#"
-                       class="header-action">
+                    <a asp-controller="Wishlist"
+                       asp-action="Index"
+                       class="header-action wishlist-action"
+                       aria-label="Wishlist">
 
                         <div class="action-icon">
-
                             <i class="bi bi-heart"></i>
-
                         </div>
 
-                        <span>
-                            Wishlist
-                        </span>
+                        <span>Wishlist</span>
 
                     </a>
 
 
-                    <a href="#"
-                       class="header-action cart">
+                    <a asp-controller="Cart"
+                       asp-action="Index"
+                       class="header-action cart-action"
+                       aria-label="Cart">
 
                         <div class="action-icon">
 
@@ -216,21 +268,21 @@
 
                         </div>
 
-                        <span>
-                            Cart
-                        </span>
+                        <span>Cart</span>
 
                     </a>
 
                 </div>
 
 
-                <!-- MOBILE MENU BUTTON -->
+                <!-- MOBILE MENU -->
 
                 <button class="mobile-menu-button"
                         type="button"
                         data-bs-toggle="offcanvas"
-                        data-bs-target="#mobileMenu">
+                        data-bs-target="#mobileMenu"
+                        aria-controls="mobileMenu"
+                        aria-label="Open menu">
 
                     <i class="bi bi-list"></i>
 
@@ -253,10 +305,15 @@
 
                         <input type="text"
                                name="search"
-                               placeholder="Search products..." />
+                               value="@Context.Request.Query["search"]"
+                               placeholder="Search products..."
+                               autocomplete="off" />
 
-                        <button type="submit">
+                        <button type="submit"
+                                aria-label="Search">
+
                             <i class="bi bi-arrow-right"></i>
+
                         </button>
 
                     </div>
@@ -269,50 +326,67 @@
 
 
         <!-- =====================================================
-             DESKTOP NAVIGATION
+             NAVIGATION
         ====================================================== -->
 
         <nav class="main-navigation">
 
-            <div class="container">
+            <div class="site-container">
 
                 <div class="navigation-inner">
 
                     <a asp-controller="Home"
                        asp-action="Index"
-                       class="active">
+                       class="@(currentController == "Home" && currentAction == "Index" ? "active" : "")">
                         Home
                     </a>
 
-                    <a href="#">
+                    <a asp-controller="Home"
+                       asp-action="Category"
+                       asp-route-slug="men"
+                       class="@(Context.Request.Query["slug"] == "men" ? "active" : "")">
                         Men
                     </a>
 
-                    <a href="#">
+                    <a asp-controller="Home"
+                       asp-action="Category"
+                       asp-route-slug="women">
                         Women
                     </a>
 
-                    <a href="#">
+                    <a asp-controller="Home"
+                       asp-action="Category"
+                       asp-route-slug="kids">
                         Kids
                     </a>
 
-                    <a href="#">
+                    <a asp-controller="Home"
+                       asp-action="Category"
+                       asp-route-slug="clothing">
                         Clothing
                     </a>
 
-                    <a href="#">
+                    <a asp-controller="Home"
+                       asp-action="Category"
+                       asp-route-slug="shoes">
                         Shoes
                     </a>
 
-                    <a href="#">
+                    <a asp-controller="Home"
+                       asp-action="Category"
+                       asp-route-slug="accessories">
                         Accessories
                     </a>
 
-                    <a href="#">
+                    <a asp-controller="Home"
+                       asp-action="Category"
+                       asp-route-slug="new-arrivals">
                         New Arrivals
                     </a>
 
-                    <a href="#"
+                    <a asp-controller="Home"
+                       asp-action="Category"
+                       asp-route-slug="sale"
                        class="sale-item">
 
                         <i class="bi bi-fire"></i>
@@ -329,31 +403,33 @@
     </header>
 
 
-    <!-- =========================================================
+    <!-- =====================================================
          MOBILE OFFCANVAS
-    ========================================================== -->
+    ====================================================== -->
 
     <div class="offcanvas offcanvas-end mobile-offcanvas"
          tabindex="-1"
-         id="mobileMenu">
+         id="mobileMenu"
+         aria-labelledby="mobileMenuLabel">
 
         <div class="offcanvas-header">
 
-            <div class="mobile-brand">
+            <a asp-controller="Home"
+               asp-action="Index"
+               class="mobile-brand"
+               id="mobileMenuLabel">
 
-                <div class="brand-icon">
-                    <i class="bi bi-bag-heart-fill"></i>
-                </div>
+                <img src="@logoPath"
+                     alt="@brandName"
+                     class="mobile-brand-image"
+                     onerror="this.onerror=null;this.src='@Url.Content("~/Images/logo.png")';" />
 
-                <strong>
-                    @brandName
-                </strong>
-
-            </div>
+            </a>
 
             <button type="button"
                     class="btn-close"
-                    data-bs-dismiss="offcanvas">
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close">
             </button>
 
         </div>
@@ -367,64 +443,80 @@
                    asp-action="Index">
 
                     <i class="bi bi-house"></i>
-                    Home
+                    <span>Home</span>
 
                 </a>
 
-                <a href="#">
+                <a asp-controller="Home"
+                   asp-action="Category"
+                   asp-route-slug="men">
 
                     <i class="bi bi-person-standing"></i>
-                    Men
+                    <span>Men</span>
 
                 </a>
 
-                <a href="#">
+                <a asp-controller="Home"
+                   asp-action="Category"
+                   asp-route-slug="women">
 
                     <i class="bi bi-person"></i>
-                    Women
+                    <span>Women</span>
 
                 </a>
 
-                <a href="#">
+                <a asp-controller="Home"
+                   asp-action="Category"
+                   asp-route-slug="kids">
 
                     <i class="bi bi-stars"></i>
-                    Kids
+                    <span>Kids</span>
 
                 </a>
 
-                <a href="#">
+                <a asp-controller="Home"
+                   asp-action="Category"
+                   asp-route-slug="clothing">
 
                     <i class="bi bi-grid"></i>
-                    Clothing
+                    <span>Clothing</span>
 
                 </a>
 
-                <a href="#">
+                <a asp-controller="Home"
+                   asp-action="Category"
+                   asp-route-slug="shoes">
 
                     <i class="bi bi-shoe-print"></i>
-                    Shoes
+                    <span>Shoes</span>
 
                 </a>
 
-                <a href="#">
+                <a asp-controller="Home"
+                   asp-action="Category"
+                   asp-route-slug="accessories">
 
                     <i class="bi bi-watch"></i>
-                    Accessories
+                    <span>Accessories</span>
 
                 </a>
 
-                <a href="#">
+                <a asp-controller="Home"
+                   asp-action="Category"
+                   asp-route-slug="new-arrivals">
 
                     <i class="bi bi-bag-plus"></i>
-                    New Arrivals
+                    <span>New Arrivals</span>
 
                 </a>
 
-                <a href="#"
+                <a asp-controller="Home"
+                   asp-action="Category"
+                   asp-route-slug="sale"
                    class="mobile-sale">
 
                     <i class="bi bi-fire"></i>
-                    Sale
+                    <span>Sale</span>
 
                 </a>
 
@@ -433,15 +525,15 @@
 
             <div class="mobile-contact">
 
-                <p>
+                <a href="tel:@phone">
                     <i class="bi bi-telephone"></i>
-                    @phone
-                </p>
+                    <span>@phone</span>
+                </a>
 
-                <p>
+                <a href="mailto:@email">
                     <i class="bi bi-envelope"></i>
-                    @email
-                </p>
+                    <span>@email</span>
+                </a>
 
             </div>
 
@@ -450,37 +542,35 @@
     </div>
 
 
-    <!-- =========================================================
-         PAGE CONTENT
-    ========================================================== -->
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
 
     <main>
-
         @RenderBody()
-
     </main>
 
 
-    <!-- =========================================================
+    <!-- =====================================================
          FOOTER
-    ========================================================== -->
+    ====================================================== -->
 
     <footer class="site-footer">
 
 
-        <!-- NEWSLETTER -->
+        <!-- =====================================================
+             NEWSLETTER
+        ====================================================== -->
 
         <section class="newsletter">
 
-            <div class="container">
+            <div class="site-container">
 
                 <div class="newsletter-inner">
 
                     <div class="newsletter-text">
 
-                        <span>
-                            STAY IN STYLE
-                        </span>
+                        <span>STAY IN STYLE</span>
 
                         <h2>
                             Get 10% off your first order
@@ -494,15 +584,22 @@
                     </div>
 
 
-                    <form class="newsletter-form">
+                    <form asp-controller="Home"
+                          asp-action="SubscribeNewsletter"
+                          method="post"
+                          class="newsletter-form">
+
+                        @Html.AntiForgeryToken()
 
                         <input type="email"
+                               name="email"
                                placeholder="Enter your email address"
+                               autocomplete="email"
                                required />
 
                         <button type="submit">
 
-                            Subscribe
+                            <span>Subscribe</span>
 
                             <i class="bi bi-arrow-right"></i>
 
@@ -512,38 +609,54 @@
 
                 </div>
 
+
+                @if (TempData["NewsletterSuccess"] != null)
+                {
+                    <div class="alert alert-success newsletter-alert">
+                        @TempData["NewsletterSuccess"]
+                    </div>
+                }
+
+                @if (TempData["NewsletterError"] != null)
+                {
+                    <div class="alert alert-danger newsletter-alert">
+                        @TempData["NewsletterError"]
+                    </div>
+                }
+
             </div>
 
         </section>
 
 
-        <!-- FOOTER MAIN -->
+        <!-- =====================================================
+             FOOTER CONTENT
+        ====================================================== -->
 
-        <div class="container">
+        <div class="site-container">
 
             <div class="footer-grid">
 
 
-                <!-- ABOUT -->
+                <!-- BRAND -->
 
                 <div class="footer-about">
 
-                    <div class="footer-brand">
+                    <a asp-controller="Home"
+                       asp-action="Index"
+                       class="footer-brand"
+                       aria-label="@brandName Home">
 
-                        <div class="footer-brand-icon">
+                        <img src="@logoPath"
+                             alt="@brandName"
+                             class="footer-logo"
+                             loading="lazy"
+                             onerror="this.onerror=null;this.src='@Url.Content("~/Images/logo.png")';" />
 
-                            <i class="bi bi-bag-heart-fill"></i>
-
-                        </div>
-
-                        <span>
-                            @brandName
-                        </span>
-
-                    </div>
+                    </a>
 
 
-                    <p>
+                    <p class="footer-description">
                         Discover premium fashion, modern styles
                         and timeless clothing designed to make
                         every day look better.
@@ -554,6 +667,7 @@
 
                         <a href="@facebook"
                            target="_blank"
+                           rel="noopener noreferrer"
                            aria-label="Facebook">
 
                             <i class="bi bi-facebook"></i>
@@ -562,6 +676,7 @@
 
                         <a href="@instagram"
                            target="_blank"
+                           rel="noopener noreferrer"
                            aria-label="Instagram">
 
                             <i class="bi bi-instagram"></i>
@@ -570,6 +685,7 @@
 
                         <a href="@twitter"
                            target="_blank"
+                           rel="noopener noreferrer"
                            aria-label="Twitter">
 
                             <i class="bi bi-twitter-x"></i>
@@ -585,27 +701,35 @@
 
                 <div class="footer-column">
 
-                    <h4>
-                        Shop
-                    </h4>
+                    <h4>Shop</h4>
 
-                    <a href="#">
+                    <a asp-controller="Home"
+                       asp-action="Category"
+                       asp-route-slug="men">
                         Men
                     </a>
 
-                    <a href="#">
+                    <a asp-controller="Home"
+                       asp-action="Category"
+                       asp-route-slug="women">
                         Women
                     </a>
 
-                    <a href="#">
+                    <a asp-controller="Home"
+                       asp-action="Category"
+                       asp-route-slug="kids">
                         Kids
                     </a>
 
-                    <a href="#">
+                    <a asp-controller="Home"
+                       asp-action="Category"
+                       asp-route-slug="new-arrivals">
                         New Arrivals
                     </a>
 
-                    <a href="#">
+                    <a asp-controller="Home"
+                       asp-action="Category"
+                       asp-route-slug="sale">
                         Sale
                     </a>
 
@@ -616,20 +740,19 @@
 
                 <div class="footer-column">
 
-                    <h4>
-                        Help
-                    </h4>
+                    <h4>Help</h4>
 
-                    <a href="#">
+                    <a asp-controller="Contact"
+                       asp-action="Index">
                         Contact Us
                     </a>
 
                     <a href="#">
-                        Shipping & Delivery
+                        Shipping &amp; Delivery
                     </a>
 
                     <a href="#">
-                        Returns & Refunds
+                        Returns &amp; Refunds
                     </a>
 
                     <a href="#">
@@ -637,7 +760,7 @@
                     </a>
 
                     <a href="#">
-                        Terms & Conditions
+                        Terms &amp; Conditions
                     </a>
 
                 </div>
@@ -647,10 +770,7 @@
 
                 <div class="footer-column contact-column">
 
-                    <h4>
-                        Contact
-                    </h4>
-
+                    <h4>Contact</h4>
 
                     <div class="contact-item">
 
@@ -686,62 +806,52 @@
 
                 </div>
 
-            </div>
 
+                <!-- MAP -->
 
-            <!-- =================================================
-                 MAP
-            ================================================== -->
+                <div class="footer-map-column">
 
-            <section class="store-location">
+                    <h4>Our Location</h4>
 
-                <div class="location-heading">
+                    <div class="footer-map-wrapper">
 
-                    <div>
-
-                        <span>
-                            OUR LOCATION
-                        </span>
-
-                        <h2>
-                            Visit Our Store
-                        </h2>
+                        <iframe src="@map"
+                                title="Our Location"
+                                loading="lazy"
+                                allowfullscreen
+                                referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
 
                     </div>
 
-                    <a href="https://www.google.com/maps"
+
+                    <a href="https://www.google.com/maps/search/?api=1&query=@Uri.EscapeDataString(address)"
                        target="_blank"
-                       class="direction-button">
+                       rel="noopener noreferrer"
+                       class="footer-map-button">
 
                         <i class="bi bi-geo-alt-fill"></i>
 
-                        Get Directions
+                        <span>Get Directions</span>
+
+                        <i class="bi bi-arrow-up-right"></i>
 
                     </a>
 
                 </div>
 
-
-                <div class="map-wrapper">
-
-                    <iframe src="@map"
-                            loading="lazy"
-                            allowfullscreen
-                            referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-
-                </div>
-
-            </section>
+            </div>
 
         </div>
 
 
-        <!-- FOOTER BOTTOM -->
+        <!-- =====================================================
+             FOOTER BOTTOM
+        ====================================================== -->
 
         <div class="footer-bottom">
 
-            <div class="container">
+            <div class="site-container">
 
                 <div class="footer-bottom-inner">
 
@@ -749,21 +859,22 @@
                         @copyright
                     </p>
 
+
                     <div class="payment-methods">
 
-                        <span>
+                        <span title="Credit Card">
                             <i class="bi bi-credit-card"></i>
                         </span>
 
-                        <span>
+                        <span title="Wallet">
                             <i class="bi bi-wallet2"></i>
                         </span>
 
-                        <span>
+                        <span title="Cash">
                             <i class="bi bi-cash-stack"></i>
                         </span>
 
-                        <span>
+                        <span title="Bank">
                             <i class="bi bi-bank"></i>
                         </span>
 
@@ -778,7 +889,9 @@
     </footer>
 
 
-    <!-- Bootstrap JS -->
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
 

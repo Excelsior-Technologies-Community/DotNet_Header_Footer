@@ -36,7 +36,9 @@
 
                 <div class="hero-buttons">
 
-                    <a href="#categories"
+                    <a asp-controller="Home"
+                       asp-action="Category"
+                       asp-route-slug="new-arrivals"
                        class="btn-primary-custom">
 
                         Shop Collection
@@ -166,11 +168,15 @@
 
             </div>
 
-            <a href="#">
-                View All
-                <i class="bi bi-arrow-right"></i>
-            </a>
+            <a asp-controller="Home"
+               asp-action="Category"
+               asp-route-slug="new-arrivals">
 
+                View All
+
+                <i class="bi bi-arrow-right"></i>
+
+            </a>
         </div>
 
 
@@ -179,25 +185,18 @@
 
             <!-- MEN -->
 
-            <a href="#"
+            <a asp-controller="Home"
+               asp-action="Category"
+               asp-route-slug="men"
                class="category-card">
 
                 <div class="category-icon">
-
                     <i class="bi bi-person-standing"></i>
-
                 </div>
 
                 <div>
-
-                    <h3>
-                        Men's Fashion
-                    </h3>
-
-                    <p>
-                        Modern essentials
-                    </p>
-
+                    <h3>Men's Fashion</h3>
+                    <p>Modern essentials</p>
                 </div>
 
                 <i class="bi bi-arrow-up-right category-arrow"></i>
@@ -207,25 +206,18 @@
 
             <!-- WOMEN -->
 
-            <a href="#"
+            <a asp-controller="Home"
+               asp-action="Category"
+               asp-route-slug="women"
                class="category-card">
 
                 <div class="category-icon">
-
                     <i class="bi bi-person"></i>
-
                 </div>
 
                 <div>
-
-                    <h3>
-                        Women's Fashion
-                    </h3>
-
-                    <p>
-                        Elegant collections
-                    </p>
-
+                    <h3>Women's Fashion</h3>
+                    <p>Elegant collections</p>
                 </div>
 
                 <i class="bi bi-arrow-up-right category-arrow"></i>
@@ -235,25 +227,18 @@
 
             <!-- KIDS -->
 
-            <a href="#"
+            <a asp-controller="Home"
+               asp-action="Category"
+               asp-route-slug="kids"
                class="category-card">
 
                 <div class="category-icon">
-
                     <i class="bi bi-stars"></i>
-
                 </div>
 
                 <div>
-
-                    <h3>
-                        Kids Collection
-                    </h3>
-
-                    <p>
-                        Cute & comfortable
-                    </p>
-
+                    <h3>Kids Collection</h3>
+                    <p>Cute & comfortable</p>
                 </div>
 
                 <i class="bi bi-arrow-up-right category-arrow"></i>
@@ -263,25 +248,18 @@
 
             <!-- SHOES -->
 
-            <a href="#"
+            <a asp-controller="Home"
+               asp-action="Category"
+               asp-route-slug="shoes"
                class="category-card">
 
                 <div class="category-icon">
-
                     <i class="bi bi-shoe-print"></i>
-
                 </div>
 
                 <div>
-
-                    <h3>
-                        Shoes
-                    </h3>
-
-                    <p>
-                        Step in style
-                    </p>
-
+                    <h3>Shoes</h3>
+                    <p>Step in style</p>
                 </div>
 
                 <i class="bi bi-arrow-up-right category-arrow"></i>

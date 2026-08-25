@@ -1,0 +1,55 @@
+﻿@model DotNet_Header_Footer.Models.Category
+
+@{
+    ViewData["Title"] = Model.CategoryName;
+}
+
+<section class="category-page py-5">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="section-mini-title">
+                SHOP CATEGORY
+            </span>
+
+            <h1 class="fw-bold mt-2">
+                @Model.CategoryName
+            </h1>
+
+            <p class="text-muted">
+                Explore our latest @Model.CategoryName collection.
+            </p>
+
+        </div>
+
+        <div class="text-center py-5">
+
+            <div class="mb-3">
+                <i class="bi bi-bag-heart"
+                   style="font-size:60px;"></i>
+            </div>
+
+            <h3>
+                @Model.CategoryName Collection
+            </h3>
+
+            <p class="text-muted">
+                Products for this category will appear here.
+            </p>
+
+            <a asp-controller="Home"
+               asp-action="Index"
+               class="btn btn-dark">
+
+                Continue Shopping
+                <i class="bi bi-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>

@@ -2,7 +2,7 @@
 
 namespace DotNet_Header_Footer.Controllers
 {
-    public class HeaderController : Controller
+    public class CartController : Controller
     {
         public IActionResult Index()
         {
