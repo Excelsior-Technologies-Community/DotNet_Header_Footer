@@ -1,0 +1,315 @@
+﻿@model DotNet_Header_Footer.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="auth-page">
+
+    <div class="auth-container">
+
+        <div class="auth-card login-card">
+
+
+            <!-- =====================================================
+                 LEFT SIDE
+            ====================================================== -->
+
+            <div class="auth-info">
+
+                <div class="auth-brand">
+
+                    <a asp-controller="Home"
+                       asp-action="Index">
+
+                        FASHIONHUB
+
+                    </a>
+
+                </div>
+
+
+                <div class="auth-info-content">
+
+                    <span class="auth-small-title">
+                        WELCOME BACK
+                    </span>
+
+                    <h1>
+                        Good to see you again.
+                    </h1>
+
+                    <p>
+                        Login to access your account,
+                        manage orders, discover new
+                        collections and enjoy member benefits.
+                    </p>
+
+
+                    <div class="auth-benefits">
+
+                        <div class="auth-benefit">
+
+                            <i class="bi bi-check-circle-fill"></i>
+
+                            <span>
+                                Track your orders
+                            </span>
+
+                        </div>
+
+
+                        <div class="auth-benefit">
+
+                            <i class="bi bi-check-circle-fill"></i>
+
+                            <span>
+                                Manage your wishlist
+                            </span>
+
+                        </div>
+
+
+                        <div class="auth-benefit">
+
+                            <i class="bi bi-check-circle-fill"></i>
+
+                            <span>
+                                Faster checkout
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+                 LOGIN FORM
+            ====================================================== -->
+
+            <div class="auth-form-wrapper">
+
+                <div class="auth-form-header">
+
+                    <span>
+                        ACCOUNT LOGIN
+                    </span>
+
+                    <h2>
+                        Welcome Back
+                    </h2>
+
+                    <p>
+                        Login to continue shopping with us.
+                    </p>
+
+                </div>
+
+
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success auth-alert">
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        <span>
+                            @TempData["SuccessMessage"]
+                        </span>
+
+                    </div>
+                }
+
+
+                <form asp-action="Login"
+                      method="post"
+                      novalidate>
+
+                    @Html.AntiForgeryToken()
+
+
+                    <!-- MODEL LEVEL ERRORS -->
+
+                    <div asp-validation-summary="ModelOnly"
+                         class="text-danger auth-validation">
+                    </div>
+
+
+                    <!-- =================================================
+                         EMAIL
+                    ================================================== -->
+
+                    <div class="form-group">
+
+                        <label asp-for="Email">
+                            Email Address
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-envelope"></i>
+
+                            <input asp-for="Email"
+                                   class="form-control"
+                                   placeholder="Enter your email"
+                                   autocomplete="email" />
+
+                        </div>
+
+                        <span asp-validation-for="Email"
+                              class="field-validation">
+                        </span>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         PASSWORD
+                    ================================================== -->
+
+                    <div class="form-group">
+
+                        <div class="password-label-row">
+
+                            <label asp-for="Password">
+                                Password
+                            </label>
+
+                            <a href="#">
+                                Forgot Password?
+                            </a>
+
+                        </div>
+
+
+                        <div class="input-wrapper">
+
+                            <i class="bi bi-lock"></i>
+
+                            <input asp-for="Password"
+                                   type="password"
+                                   class="form-control"
+                                   placeholder="Enter your password"
+                                   autocomplete="current-password" />
+
+                            <button type="button"
+                                    class="password-toggle"
+                                    onclick="togglePassword('Password', this)">
+
+                                <i class="bi bi-eye"></i>
+
+                            </button>
+
+                        </div>
+
+                        <span asp-validation-for="Password"
+                              class="field-validation">
+                        </span>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         REMEMBER ME
+                    ================================================== -->
+
+                    <div class="remember-row">
+
+                        <label class="remember-label">
+
+                            <input asp-for="RememberMe" />
+
+                            <span>
+                                Remember me
+                            </span>
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         LOGIN BUTTON
+                    ================================================== -->
+
+                    <button type="submit"
+                            class="auth-submit">
+
+                        <span>
+                            Login
+                        </span>
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </button>
+
+
+                    <!-- =================================================
+                         REGISTER LINK
+                    ================================================== -->
+
+                    <div class="auth-switch">
+
+                        <span>
+                            Don't have an account?
+                        </span>
+
+                        <a asp-controller="Account"
+                           asp-action="Register">
+
+                            Create Account
+
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+
+        function togglePassword(inputId, button) {
+
+            const input =
+                document.getElementById(inputId);
+
+            const icon =
+                button.querySelector("i");
+
+            if (input.type === "password") {
+
+                input.type = "text";
+
+                icon.classList.remove("bi-eye");
+
+                icon.classList.add("bi-eye-slash");
+
+            }
+            else {
+
+                input.type = "password";
+
+                icon.classList.remove("bi-eye-slash");
+
+                icon.classList.add("bi-eye");
+
+            }
+        }
+
+    </script>
+}

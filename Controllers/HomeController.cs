@@ -87,9 +87,8 @@ namespace DotNet_Header_Footer.Controllers
             ViewBag.SiteSettings = settings;
         }
 
-
         // ============================================
-        // CATEGORY
+        // CATEGORY PAGE
         // ============================================
 
         public IActionResult Category(string slug)
@@ -102,20 +101,29 @@ namespace DotNet_Header_Footer.Controllers
             string? connectionString =
                 _configuration.GetConnectionString("DBConnection");
 
+            if (string.IsNullOrEmpty(connectionString))
+            {
+                return NotFound();
+            }
+
             Category? category = null;
 
             using (SqlConnection con =
                    new SqlConnection(connectionString))
             {
                 using (SqlCommand cmd =
-                       new SqlCommand("SP_GetCategoryBySlug", con))
+                       new SqlCommand(
+                           "SP_GetCategoryBySlug",
+                           con))
                 {
                     cmd.CommandType =
                         CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue(
+                    cmd.Parameters.Add(
                         "@Slug",
-                        slug);
+                        SqlDbType.NVarChar,
+                        200
+                    ).Value = slug.Trim();
 
                     con.Open();
 
@@ -131,12 +139,10 @@ namespace DotNet_Header_Footer.Controllers
                                         reader["CategoryId"]),
 
                                 CategoryName =
-                                    reader["CategoryName"]
-                                    ?.ToString(),
+                                    reader["CategoryName"]?.ToString(),
 
                                 Slug =
-                                    reader["Slug"]
-                                    ?.ToString()
+                                    reader["Slug"]?.ToString()
                             };
                         }
                     }
@@ -148,9 +154,15 @@ namespace DotNet_Header_Footer.Controllers
                 return NotFound();
             }
 
-            ViewBag.SiteSettings = GetSiteSettings();
+            CategoryPageVM model = new CategoryPageVM
+            {
+                Category = category,
+                SiteSettings = GetSiteSettings()
+            };
 
-            return View(category);
+            ViewBag.SiteSettings = model.SiteSettings;
+
+            return View(model);
         }
 
 

@@ -1,0 +1,830 @@
+﻿@using DotNet_Header_Footer.Models
+
+@{
+    ViewData["Title"] = "Contact Us";
+
+    var settings = ViewBag.SiteSettings as SiteSettings;
+
+    var brandName =
+        string.IsNullOrWhiteSpace(settings?.BrandName)
+            ? "FASHIONHUB"
+            : settings.BrandName.Trim();
+
+    var address =
+        string.IsNullOrWhiteSpace(settings?.Address)
+            ? "Poonam Garment, Ahmedabad, Gujarat, India"
+            : settings.Address.Trim();
+
+    var phone =
+        string.IsNullOrWhiteSpace(settings?.Phone)
+            ? "+91 98765 43210"
+            : settings.Phone.Trim();
+
+    var email =
+        string.IsNullOrWhiteSpace(settings?.Email)
+            ? "support@fashionhub.com"
+            : settings.Email.Trim();
+
+    var map =
+        string.IsNullOrWhiteSpace(settings?.MapEmbedUrl)
+            ? "https://www.google.com/maps?q=Poonam+garment,+23.0296231,72.4745156&output=embed"
+            : settings.MapEmbedUrl.Trim();
+}
+
+
+<!-- =========================================================
+     CONTACT HERO
+========================================================= -->
+
+<section class="contact-hero">
+
+    <div class="container">
+
+        <div class="contact-hero-content">
+
+            <span class="contact-eyebrow">
+                GET IN TOUCH
+            </span>
+
+            <h1>
+                Contact Us
+            </h1>
+
+            <p>
+                Have a question, need help with your order,
+                or simply want to say hello?
+                We'd love to hear from you.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTACT SECTION
+========================================================= -->
+
+<section class="contact-section">
+
+    <div class="container">
+
+        <div class="row g-5">
+
+
+            <!-- =================================================
+                 CONTACT INFORMATION
+            ================================================== -->
+
+            <div class="col-lg-5">
+
+                <div class="contact-info">
+
+                    <span class="section-label">
+                        CONTACT INFORMATION
+                    </span>
+
+                    <h2>
+                        We'd love to<br />
+                        hear from you.
+                    </h2>
+
+                    <p class="contact-description">
+                        Whether you have a question about our
+                        products, your order, delivery or anything
+                        else, our team is ready to help.
+                    </p>
+
+
+                    <!-- ADDRESS -->
+
+                    <div class="contact-detail">
+
+                        <div class="contact-detail-icon">
+
+                            <i class="bi bi-geo-alt-fill"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h5>
+                                Visit Us
+                            </h5>
+
+                            <p>
+                                @address
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PHONE -->
+
+                    <div class="contact-detail">
+
+                        <div class="contact-detail-icon">
+
+                            <i class="bi bi-telephone-fill"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h5>
+                                Call Us
+                            </h5>
+
+                            <a href="tel:@phone">
+                                @phone
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="contact-detail">
+
+                        <div class="contact-detail-icon">
+
+                            <i class="bi bi-envelope-fill"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h5>
+                                Email Us
+                            </h5>
+
+                            <a href="mailto:@email">
+                                @email
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- BUSINESS HOURS -->
+
+                    <div class="contact-detail">
+
+                        <div class="contact-detail-icon">
+
+                            <i class="bi bi-clock-fill"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h5>
+                                Business Hours
+                            </h5>
+
+                            <p>
+                                Monday – Saturday
+                                <br />
+                                10:00 AM – 8:00 PM
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 CONTACT FORM
+            ================================================== -->
+
+            <div class="col-lg-7">
+
+                <div class="contact-form-card">
+
+                    <div class="form-heading">
+
+                        <span>
+                            SEND US A MESSAGE
+                        </span>
+
+                        <h2>
+                            How can we help?
+                        </h2>
+
+                    </div>
+
+
+                    <form method="post"
+                          action="#"
+                          class="contact-form">
+
+
+                        <div class="row g-4">
+
+                            <!-- NAME -->
+
+                            <div class="col-md-6">
+
+                                <label for="name">
+                                    Your Name
+                                </label>
+
+                                <div class="input-box">
+
+                                    <i class="bi bi-person"></i>
+
+                                    <input type="text"
+                                           id="name"
+                                           name="name"
+                                           placeholder="Enter your name"
+                                           required />
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- EMAIL -->
+
+                            <div class="col-md-6">
+
+                                <label for="contactEmail">
+                                    Email Address
+                                </label>
+
+                                <div class="input-box">
+
+                                    <i class="bi bi-envelope"></i>
+
+                                    <input type="email"
+                                           id="contactEmail"
+                                           name="email"
+                                           placeholder="Enter your email"
+                                           required />
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- PHONE -->
+
+                            <div class="col-md-6">
+
+                                <label for="contactPhone">
+                                    Phone Number
+                                </label>
+
+                                <div class="input-box">
+
+                                    <i class="bi bi-telephone"></i>
+
+                                    <input type="tel"
+                                           id="contactPhone"
+                                           name="phone"
+                                           placeholder="Enter your phone number" />
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- SUBJECT -->
+
+                            <div class="col-md-6">
+
+                                <label for="subject">
+                                    Subject
+                                </label>
+
+                                <div class="input-box">
+
+                                    <i class="bi bi-chat-left-text"></i>
+
+                                    <input type="text"
+                                           id="subject"
+                                           name="subject"
+                                           placeholder="What is this about?"
+                                           required />
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- MESSAGE -->
+
+                            <div class="col-12">
+
+                                <label for="message">
+                                    Message
+                                </label>
+
+                                <div class="input-box textarea-box">
+
+                                    <i class="bi bi-pencil"></i>
+
+                                    <textarea id="message"
+                                              name="message"
+                                              rows="6"
+                                              placeholder="Write your message..."
+                                              required></textarea>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- BUTTON -->
+
+                            <div class="col-12">
+
+                                <button type="submit"
+                                        class="contact-submit">
+
+                                    <span>
+                                        Send Message
+                                    </span>
+
+                                    <i class="bi bi-arrow-right"></i>
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     GOOGLE MAP
+========================================================= -->
+
+<section class="contact-map-section">
+
+    <div class="container">
+
+        <div class="map-heading text-center">
+
+            <span>
+                FIND US
+            </span>
+
+            <h2>
+                Our Location
+            </h2>
+
+            <p>
+                Visit us at our store and explore our latest
+                fashion collection.
+            </p>
+
+        </div>
+
+
+        <div class="contact-map-wrapper">
+
+            <iframe src="@map"
+                    title="@brandName Location"
+                    loading="lazy"
+                    allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CONTACT PAGE CSS
+========================================================= -->
+
+<style>
+
+    /* =========================================================
+           HERO
+        ========================================================= */
+
+    .contact-hero {
+        background: #111;
+        color: #fff;
+        padding: 90px 20px;
+    }
+
+    .contact-hero-content {
+        max-width: 850px;
+        margin: auto;
+        text-align: center;
+    }
+
+    .contact-eyebrow {
+        display: inline-block;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        opacity: .7;
+        margin-bottom: 18px;
+    }
+
+    .contact-hero h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 56px;
+        font-weight: 700;
+        margin-bottom: 18px;
+    }
+
+    .contact-hero p {
+        max-width: 650px;
+        margin: auto;
+        font-size: 17px;
+        line-height: 1.8;
+        opacity: .75;
+    }
+
+
+    /* =========================================================
+           CONTACT SECTION
+        ========================================================= */
+
+    .contact-section {
+        padding: 90px 20px;
+        background: #fff;
+    }
+
+
+    /* =========================================================
+           INFORMATION
+        ========================================================= */
+
+    .contact-info {
+        padding-right: 30px;
+    }
+
+    .section-label {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 2.5px;
+        color: #777;
+        margin-bottom: 15px;
+    }
+
+    .contact-info h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 42px;
+        line-height: 1.2;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #111;
+    }
+
+    .contact-description {
+        color: #777;
+        line-height: 1.8;
+        font-size: 15px;
+        max-width: 480px;
+        margin-bottom: 40px;
+    }
+
+
+    /* =========================================================
+           CONTACT DETAILS
+        ========================================================= */
+
+    .contact-detail {
+        display: flex;
+        align-items: flex-start;
+        gap: 18px;
+        margin-bottom: 28px;
+    }
+
+    .contact-detail-icon {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        border-radius: 50%;
+        background: #111;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+    }
+
+    .contact-detail h5 {
+        font-size: 15px;
+        font-weight: 700;
+        margin: 0 0 6px;
+        color: #111;
+    }
+
+    .contact-detail p {
+        margin: 0;
+        color: #777;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .contact-detail a {
+        color: #777;
+        text-decoration: none;
+        font-size: 14px;
+        transition: .3s;
+    }
+
+        .contact-detail a:hover {
+            color: #111;
+        }
+
+
+    /* =========================================================
+           FORM CARD
+        ========================================================= */
+
+    .contact-form-card {
+        background: #f8f8f8;
+        padding: 45px;
+        border-radius: 16px;
+    }
+
+    .form-heading {
+        margin-bottom: 30px;
+    }
+
+        .form-heading span {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #777;
+        }
+
+        .form-heading h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 34px;
+            font-weight: 700;
+            margin: 8px 0 0;
+            color: #111;
+        }
+
+
+    /* =========================================================
+           FORM
+        ========================================================= */
+
+    .contact-form label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: #222;
+        margin-bottom: 8px;
+    }
+
+    .input-box {
+        position: relative;
+    }
+
+        .input-box > i {
+            position: absolute;
+            left: 17px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+            font-size: 16px;
+            z-index: 2;
+        }
+
+        .input-box input,
+        .input-box textarea {
+            width: 100%;
+            border: 1px solid #ddd;
+            background: #fff;
+            border-radius: 7px;
+            padding: 14px 16px 14px 46px;
+            outline: none;
+            font-size: 14px;
+            color: #222;
+            transition: .3s;
+            font-family: inherit;
+        }
+
+        .input-box input {
+            height: 52px;
+        }
+
+        .input-box textarea {
+            resize: vertical;
+            min-height: 145px;
+            padding-top: 15px;
+        }
+
+    .textarea-box > i {
+        top: 20px;
+        transform: none;
+    }
+
+    .input-box input:focus,
+    .input-box textarea:focus {
+        border-color: #111;
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, .05);
+    }
+
+
+    /* =========================================================
+           SUBMIT BUTTON
+        ========================================================= */
+
+    .contact-submit {
+        width: 100%;
+        height: 54px;
+        border: none;
+        border-radius: 7px;
+        background: #111;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: .3s;
+    }
+
+        .contact-submit:hover {
+            background: #333;
+            transform: translateY(-1px);
+        }
+
+
+    /* =========================================================
+           MAP
+        ========================================================= */
+
+    .contact-map-section {
+        padding: 0 20px 90px;
+        background: #fff;
+    }
+
+    .map-heading {
+        margin-bottom: 35px;
+    }
+
+        .map-heading span {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .map-heading h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #111;
+        }
+
+        .map-heading p {
+            color: #777;
+            font-size: 15px;
+            margin: 0;
+        }
+
+    .contact-map-wrapper {
+        width: 100%;
+        height: 420px;
+        overflow: hidden;
+        border-radius: 14px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, .08);
+    }
+
+        .contact-map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+
+    /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+    @@media (max-width: 991px) {
+
+        .contact-info {
+            padding-right: 0;
+        }
+
+            .contact-info h2 {
+                font-size: 36px;
+            }
+
+        .contact-form-card {
+            padding: 35px;
+        }
+    }
+
+
+    @@media (max-width: 768px) {
+
+        .contact-hero {
+            padding: 65px 20px;
+        }
+
+            .contact-hero h1 {
+                font-size: 42px;
+            }
+
+            .contact-hero p {
+                font-size: 15px;
+            }
+
+        .contact-section {
+            padding: 60px 15px;
+        }
+
+        .contact-info {
+            margin-bottom: 15px;
+        }
+
+            .contact-info h2 {
+                font-size: 34px;
+            }
+
+        .contact-form-card {
+            padding: 28px 20px;
+        }
+
+        .form-heading h2 {
+            font-size: 29px;
+        }
+
+        .contact-map-section {
+            padding: 0 15px 60px;
+        }
+
+        .contact-map-wrapper {
+            height: 330px;
+            border-radius: 10px;
+        }
+
+        .map-heading h2 {
+            font-size: 32px;
+        }
+    }
+
+
+    @@media (max-width: 575px) {
+
+        .contact-hero h1 {
+            font-size: 36px;
+        }
+
+        .contact-detail {
+            gap: 14px;
+        }
+
+        .contact-detail-icon {
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+        }
+
+        .contact-form-card {
+            padding: 25px 16px;
+        }
+
+        .contact-map-wrapper {
+            height: 280px;
+        }
+    }
+
+</style>

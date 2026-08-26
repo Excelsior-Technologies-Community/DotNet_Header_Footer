@@ -1,55 +1,196 @@
-﻿@model DotNet_Header_Footer.Models.Category
+﻿@model DotNet_Header_Footer.Models.CategoryPageVM
 
 @{
-    ViewData["Title"] = Model.CategoryName;
+    ViewData["Title"] = Model.Category?.CategoryName ?? "Category";
 }
 
-<section class="category-page py-5">
+<div class="category-page">
 
-    <div class="container">
+    <!-- CATEGORY HERO -->
 
-        <div class="text-center mb-5">
+    <section class="category-hero">
 
-            <span class="section-mini-title">
-                SHOP CATEGORY
-            </span>
+        <div class="container">
 
-            <h1 class="fw-bold mt-2">
-                @Model.CategoryName
-            </h1>
+            <div class="category-content text-center">
 
-            <p class="text-muted">
-                Explore our latest @Model.CategoryName collection.
-            </p>
+                <span class="category-label">
+                    FASHION COLLECTION
+                </span>
 
-        </div>
+                <h1>
+                    @Model.Category?.CategoryName
+                </h1>
 
-        <div class="text-center py-5">
+                <p>
+                    Explore our latest
+                    @Model.Category?.CategoryName
+                    collection.
+                </p>
 
-            <div class="mb-3">
-                <i class="bi bi-bag-heart"
-                   style="font-size:60px;"></i>
             </div>
 
-            <h3>
-                @Model.CategoryName Collection
-            </h3>
+        </div>
 
-            <p class="text-muted">
-                Products for this category will appear here.
-            </p>
+    </section>
 
-            <a asp-controller="Home"
-               asp-action="Index"
-               class="btn btn-dark">
 
-                Continue Shopping
-                <i class="bi bi-arrow-right"></i>
+    <!-- CATEGORY CONTENT -->
 
-            </a>
+    <section class="category-section">
+
+        <div class="container">
+
+            <div class="category-card">
+
+                <div class="category-icon">
+                    <i class="bi bi-grid"></i>
+                </div>
+
+                <h2>
+                    @Model.Category?.CategoryName
+                </h2>
+
+                <p>
+                    Discover the latest styles and collections
+                    available in our
+                    @Model.Category?.CategoryName
+                    category.
+                </p>
+
+                <a asp-controller="Home"
+                   asp-action="Index"
+                   class="btn category-btn">
+                    Continue Shopping
+                </a>
+
+            </div>
 
         </div>
 
-    </div>
+    </section>
 
-</section>
+</div>
+
+
+<style>
+
+    .category-page {
+        min-height: 70vh;
+        background: #f8f8f8;
+    }
+
+    .category-hero {
+        background: #111;
+        color: #fff;
+        padding: 90px 20px;
+    }
+
+    .category-content {
+        max-width: 800px;
+        margin: auto;
+    }
+
+    .category-label {
+        display: inline-block;
+        font-size: 13px;
+        letter-spacing: 3px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        opacity: .7;
+    }
+
+    .category-content h1 {
+        font-size: 52px;
+        font-weight: 700;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+    }
+
+    .category-content p {
+        font-size: 18px;
+        margin: 0;
+        opacity: .75;
+    }
+
+    .category-section {
+        padding: 70px 20px;
+    }
+
+    .category-card {
+        max-width: 700px;
+        margin: auto;
+        background: #fff;
+        padding: 60px 40px;
+        text-align: center;
+        border-radius: 18px;
+        box-shadow: 0 10px 35px rgba(0,0,0,.08);
+    }
+
+    .category-icon {
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 25px;
+        border-radius: 50%;
+        background: #111;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+    }
+
+    .category-card h2 {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    .category-card p {
+        color: #777;
+        line-height: 1.7;
+        margin-bottom: 30px;
+    }
+
+    .category-btn {
+        background: #111;
+        color: #fff;
+        padding: 12px 30px;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: .3s;
+    }
+
+        .category-btn:hover {
+            background: #333;
+            color: #fff;
+        }
+
+    @@media (max-width: 768px) {
+
+        .category-hero {
+            padding: 65px 20px;
+        }
+
+        .category-content h1 {
+            font-size: 38px;
+        }
+
+        .category-content p {
+            font-size: 16px;
+        }
+
+        .category-section {
+            padding: 45px 15px;
+        }
+
+        .category-card {
+            padding: 40px 25px;
+        }
+
+            .category-card h2 {
+                font-size: 27px;
+            }
+    }
+
+</style>
